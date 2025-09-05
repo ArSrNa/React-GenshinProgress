@@ -29,24 +29,24 @@ $:
             git_email: "root@arsrna.cn"
 
   # tag push 时触发
-  # tag_push:
-  #   - docker:
-  #       image: docker.cnb.cool/arsrna/dev-env/node22:latest
-  #     stages:
-  #       - name: 构建部署
-  #         script:
-  #           - pnpm i
-  #           - npm run build
-  #           - echo $CNB_BRANCH
-  #       - name: update version
-  #         # 修改 package.json 中的version为当前tag，但不会提交代码
-  #         script: npm version $CNB_BRANCH --no-git-tag-version
-  #       - name: npm publish
-  #         image: tencentcom/npm
-  #         settings:
-  #           username: $CNB_TOKEN_USER_NAME
-  #           token: $CNB_TOKEN
-  #           email: $CNB_COMMITTER_EMAIL
-  #           registry: https://npm.cnb.cool/arsrna/xiangong-cloud/-/packages/
-  #           folder: ./
-  #           fail_on_version_conflict: true
+  tag_push:
+    - docker:
+        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+      stages:
+        - name: 构建部署
+          script:
+            - pnpm i
+            - npm run build
+            - echo $CNB_BRANCH
+        - name: update version
+          # 修改 package.json 中的version为当前tag，但不会提交代码
+          script: npm version $CNB_BRANCH --no-git-tag-version
+        - name: npm publish
+          image: tencentcom/npm
+          settings:
+            username: $CNB_TOKEN_USER_NAME
+            token: $CNB_TOKEN
+            email: $CNB_COMMITTER_EMAIL
+            registry: https://registry.npmjs.org/
+            folder: ./
+            fail_on_version_conflict: true
