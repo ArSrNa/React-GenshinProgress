@@ -44,9 +44,9 @@ $:
         - name: npm publish
           image: tencentcom/npm
           settings:
-            username: $CNB_TOKEN_USER_NAME
-            token: $CNB_TOKEN
-            email: $CNB_COMMITTER_EMAIL
+            username: $NPM_USER
+            token: $NPM_TOKEN
+            email: $NPM_EMAIL
             registry: https://registry.npmjs.org/
             folder: ./
             fail_on_version_conflict: true
