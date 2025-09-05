@@ -107,9 +107,9 @@ const LoadDone = () => (<div style={{ display: 'flex' }}>
 */
 export function GIProgress({ num, width, backgroundStyle, progressStyle }: {
     num: number,
-    width: number,
-    backgroundStyle: CSSProperties,
-    progressStyle: CSSProperties
+    width?: number,
+    backgroundStyle?: CSSProperties,
+    progressStyle?: CSSProperties
 }) {
 
     return (
