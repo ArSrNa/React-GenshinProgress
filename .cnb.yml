@@ -8,12 +8,14 @@ $:
         volumes:
           - /root/.npm
           - /root/.pnpm-store
+      imports:
+        - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
       runner:
         cpus: 16
       stages:
         - name: 安装依赖
           script:
-            - pnpm install
+            - pnpm i
             - pnpm i -g typescript
   push:
     - stages:
